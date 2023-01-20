@@ -14,20 +14,60 @@ $(document).ready(function () {
 
     // Timeblock variables
     var stdBusHours = 9;
+    var startTime = 9;
+    var plannerContainer = $(".container");
+    var currentHour = moment().hour();
+
+    // TODO: Get item from local storage
     
-    
-    
-    
+
+    // TODO: Add event to local storage
+
+
     // TODO: Create an array of timeblocks for business hours
     for (let i = 0; i < stdBusHours; i++) { 
         // Creating the timeblock row
         var timeBlock = $("<div>");
         timeBlock.addClass("row time-block");
+        timeBlock.attr("id", "hour" + i);
+        console.log(timeBlock.attr("id"));
         
+        // Creating the hour element
+        var hour = $("<div>");
+        hour.addClass("hour col-sm-1");
+        hour.text(moment().hour(i + startTime).format("hA"));
         
-       
+
+        // Creating the text area
+        var textArea = $("<textarea>");
+        textArea.addClass("eventText col-sm-10 future");
+
+        
+        // Creating the save button
+        var saveBtn = $("<button>");
+        saveBtn.addClass("btn btn-primary saveBtn col-sm-1 fas fa-save");
+
+
+        // Adding elements to the timeBlock row
+        timeBlock.append(hour);
+        timeBlock.append(textArea);
+        timeBlock.append(saveBtn);
+        
+        // Adding timeBlock row to the container div
+        plannerContainer.append(timeBlock);
+
+        if (currentHour > (i + startTime)) {
+            textArea.attr("class", "eventText col-sm-10 past");
+        }
+        else if (currentHour === (i + startTime)){
+            textArea.attr("class", "eventText col-sm-10 present");
+        }
     };
         
-    // TODO: eventhandler to add an event when the save button is clicked
-
+    $(".saveBtn").on("click", function (event) {
+        event.preventDefault();
+        var currValue = $(this).siblings(".eventText").val();
+        var currHour = $(this).parent().attr("id");
+        localStorage.setItem(currHour, currValue);
+    });
 });
