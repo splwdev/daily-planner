@@ -34,7 +34,7 @@
 <h3 align="center">Daily Planner</h3>
 
   <p align="center">
-    Code Quiz Project
+    Work Day Scheduler
     <br />
     <a href="https://github.com/splwdev/daily-planner"><strong>Explore the docs »</strong></a>
     <br />
