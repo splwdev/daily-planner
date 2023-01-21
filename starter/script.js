@@ -44,7 +44,14 @@ $(document).ready(function () {
         saveBtn.addClass("btn btn-primary saveBtn col-sm-1 fas fa-save");
         saveBtn.attr("data-index", i);
 
+        var eventText = storedValues[i];
         
+        if (eventText) {
+            textArea.text(eventText);
+        }
+        else {
+            textArea.text("");
+        }
 
         // Adding elements to the timeBlock row
         timeBlock.append(hour);
