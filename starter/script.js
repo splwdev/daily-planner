@@ -12,41 +12,39 @@ $(document).ready(function () {
     var weekDay = moment().format("dddd, MMMM Do");
     $("#currentDay").text(weekDay);
 
-    // Timeblock variables
+    // Global variables
+    // Setting number of business hours in a day
     var stdBusHours = 9;
     var startTime = 9;
     var plannerContainer = $(".container");
     var currentHour = moment().hour();
-
-    // TODO: Get item from local storage
+    var storedValues = JSON.parse(localStorage.getItem("storedValues")) || [];
     
-
-    // TODO: Add event to local storage
-
-
+     
+    // getStoredValues();
+    
     // TODO: Create an array of timeblocks for business hours
     for (let i = 0; i < stdBusHours; i++) { 
         // Creating the timeblock row
         var timeBlock = $("<div>");
         timeBlock.addClass("row time-block");
         timeBlock.attr("id", "hour" + i);
-        console.log(timeBlock.attr("id"));
         
         // Creating the hour element
         var hour = $("<div>");
         hour.addClass("hour col-sm-1");
         hour.text(moment().hour(i + startTime).format("hA"));
-        
 
         // Creating the text area
         var textArea = $("<textarea>");
         textArea.addClass("eventText col-sm-10 future");
 
-        
         // Creating the save button
         var saveBtn = $("<button>");
         saveBtn.addClass("btn btn-primary saveBtn col-sm-1 fas fa-save");
+        saveBtn.attr("data-index", i);
 
+        
 
         // Adding elements to the timeBlock row
         timeBlock.append(hour);
@@ -62,6 +60,8 @@ $(document).ready(function () {
         else if (currentHour === (i + startTime)){
             textArea.attr("class", "eventText col-sm-10 present");
         }
+
+        
     };
         
     $(".saveBtn").on("click", function (event) {
