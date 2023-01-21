@@ -85,15 +85,19 @@ The following image shows the web application's appearance and functionality:
 
 [![Product Name Screen Shot][product-screenshot]](https://splwdev.github.io/daily-planner)
 
-Create a code quiz that contains the following requirements:
+The app should:
 
-* A start button that when clicked a timer starts and the first question appears.
-  * Questions contain buttons for each answer.
-  * When answer is clicked, the next question appears
-  * If the answer clicked was incorrect then subtract time from the clock
+* Display the current day at the top of the calender when a user opens the planner.
+ 
+* Present timeblocks for standard business hours when the user scrolls down.
+ 
+* Color-code each timeblock based on past, present, and future when the timeblock is viewed.
+ 
+* Allow a user to enter an event when they click a timeblock
 
-* The quiz should end when all questions are answered or the timer reaches 0.
-  * When the game ends, it should display their score and give the user the ability to save their initials and their score
+* Save the event in local storage when the save button is clicked in that timeblock.
+
+* Persist events between refreshes of a page
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -193,7 +197,7 @@ Project Link: [https://github.com/splwdev/daily-planner](https://github.com/splw
 [license-url]: https://github.com/splwdev/daily-planner/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/shane-lynch-b28bb15
-[product-screenshot]: assets/images/08-web-apis-challenge-demo.gif
+[product-screenshot]: ./images/05-third-party-apis-homework-demo.gif
 [HTML]: https://img.shields.io/badge/HTML-000000?style=for-the-badge
 [HTML-url]: https://developer.mozilla.org/en-US/docs/Web/HTML
 [CSS]: https://img.shields.io/badge/css-DD0031?style=for-the-badge
