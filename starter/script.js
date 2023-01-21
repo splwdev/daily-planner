@@ -68,7 +68,7 @@ $(document).ready(function () {
             textArea.attr("class", "eventText col-sm-10 present");
         }
 
-        
+        $(("#hour" + i) + " .eventText").val(localStorage.getItem("hour" + i));
     };
         
     $(".saveBtn").on("click", function (event) {
