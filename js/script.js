@@ -18,12 +18,10 @@ $(document).ready(function () {
     var startTime = 9;
     var plannerContainer = $(".container");
     var currentHour = moment().hour();
+    // Sets storedValues variable to equal empty array if local storage is undefined
     var storedValues = JSON.parse(localStorage.getItem("storedValues")) || [];
     
-     
-    // getStoredValues();
-    
-    // TODO: Create an array of timeblocks for business hours
+    // For loop to create the time blocks for each business hour
     for (let i = 0; i < stdBusHours; i++) { 
         // Creating the timeblock row, adding clas and id attributes
         var timeBlock = $("<div>");
