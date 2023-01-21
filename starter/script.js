@@ -25,27 +25,29 @@ $(document).ready(function () {
     
     // TODO: Create an array of timeblocks for business hours
     for (let i = 0; i < stdBusHours; i++) { 
-        // Creating the timeblock row
+        // Creating the timeblock row, adding clas and id attributes
         var timeBlock = $("<div>");
         timeBlock.addClass("row time-block");
         timeBlock.attr("id", "hour" + i);
         
-        // Creating the hour element
+        // Creating the hour element, adding class and setting text value for hours
         var hour = $("<div>");
         hour.addClass("hour col-sm-1");
         hour.text(moment().hour(i + startTime).format("hA"));
 
-        // Creating the text area
+        // Creating the text area and adding class
         var textArea = $("<textarea>");
         textArea.addClass("eventText col-sm-10 future");
 
-        // Creating the save button
+        // Creating the save button, adding class and data-index attribute
         var saveBtn = $("<button>");
         saveBtn.addClass("btn btn-primary saveBtn col-sm-1 fas fa-save");
         saveBtn.attr("data-index", i);
 
+        // Setting eventText attribute to equal the storedValues array (in the loop)
         var eventText = storedValues[i];
         
+        // Setting eventText to equal textArea value or empty string
         if (eventText) {
             textArea.text(eventText);
         }
@@ -61,6 +63,7 @@ $(document).ready(function () {
         // Adding timeBlock row to the container div
         plannerContainer.append(timeBlock);
 
+        // Setting the class to past or present depending upon current time (default is future)
         if (currentHour > (i + startTime)) {
             textArea.attr("class", "eventText col-sm-10 past");
         }
@@ -68,9 +71,11 @@ $(document).ready(function () {
             textArea.attr("class", "eventText col-sm-10 present");
         }
 
+        // using for loop to get items from local storage
         $(("#hour" + i) + " .eventText").val(localStorage.getItem("hour" + i));
     };
         
+    // event handler to save items to local storage upon click save button
     $(".saveBtn").on("click", function (event) {
         event.preventDefault();
         var currValue = $(this).siblings(".eventText").val();
